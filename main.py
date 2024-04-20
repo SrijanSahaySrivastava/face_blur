@@ -85,8 +85,18 @@ import shutil
 from fastapi import FastAPI, Query
 from fastapi.responses import JSONResponse
 import os
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods
+    allow_headers=["*"],  # Allow all headers
+)
 
 
 @app.post("/blur_face/")
